@@ -156,9 +156,12 @@ function autoCarusel(){
          }
 }
 
+//  Intervallo per far partire il carosello al caricamento della pagina
+ let myInterval = setInterval(autoCarusel, 1300);
+
 // creazione dei pulsanti per avviare o stoppare il carosello
 const play_button = document.getElementById("play")
-let myInterval ;
+myInterval ;
 
 play_button.addEventListener('click', function(){
     myInterval = setInterval(autoCarusel, 1300);
