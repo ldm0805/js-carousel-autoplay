@@ -42,8 +42,6 @@ const next = document.querySelector('.next');
 
 //funzione anonima per il carosello automatico
 
-
-
 function autoCarusel(){
        
      if (itemActive < imagesArray.length -1){
@@ -76,7 +74,7 @@ function autoCarusel(){
          }
 }
 
-// Intervallo da 1.5 secondi
-setInterval(autoCarusel,1500);
+//Richiamo alla funzione e Intervallo da 1.5 secondi
+setInterval(autoCarusel, 1500);
 console.log(autoCarusel)
 
