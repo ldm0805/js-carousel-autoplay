@@ -40,6 +40,88 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 
+next.addEventListener('click', function(){
+       
+    if (itemActive < imagesArray.length -1){
+
+        //rimuovo la classe active al nuovo elemento dell'array items 
+        items[itemActive].classList.remove('active');
+        
+        //rimuovo la classe active al nuovo elemento dell'array circle 
+        circles[itemActive].classList.remove('active');
+    
+        //incremento il suo valore di 1
+        ++itemActive;
+
+        //aggiungo la classe active al nuovo elemento dell'array items
+        items[itemActive].classList.add('active');
+
+       //aggiungo la classe active al nuovo elemento dell'array circle
+        circles[itemActive].classList.add('active');
+        }   
+    
+    else{
+        //rimuovo la classe active al nuovo elemento dell'array items 
+        items[itemActive].classList.remove('active');
+
+        //rimuovo la classe active al nuovo elemento dell'array circle 
+        circles[itemActive].classList.remove('active');
+    
+        //assegno ad itemActive 0
+        itemActive = 0;
+
+        //aggiungo la classe active al nuovo elemento dell'array items
+        items[itemActive].classList.add('active');
+
+        //aggiungo la classe active al nuovo elemento dell'array circle
+        circles[itemActive].classList.add('active');
+        }
+});
+
+// vecchio esercizio
+prev.addEventListener('click', function(){
+    //verifico l'elemento attivo (itemActive)
+    if (itemActive > 0){
+
+        //rimuovo la classe active al nuovo elemento dell'array items 
+        items[itemActive].classList.remove('active');
+
+        //rimuovo la classe active al nuovo elemento dell'array circle 
+        circles[itemActive].classList.remove('active');
+    
+        //decremento il suo valore di 1
+        itemActive--;
+
+        //aggiungo la classe active al nuovo elemento dell'array items
+        items[itemActive].classList.add('active');
+
+        //aggiungo la classe active al nuovo elemento dell'array circle
+        circles[itemActive].classList.add('active');
+    }
+
+    else{
+
+        //rimuovo la classe active al nuovo elemento dell'array items 
+        items[itemActive].classList.remove('active');
+
+        //rimuovo la classe active al nuovo elemento dell'array circle 
+        circles[itemActive].classList.remove('active');
+        
+        //incremento il suo valore di 1
+        itemActive = imagesArray.length-1;
+        
+        //aggiungo la classe active al nuovo elemento dell'array items
+        items[itemActive].classList.add('active');
+        
+        //aggiungo la classe active al nuovo elemento dell'array circle
+        circles[itemActive].classList.add('active');
+    }
+})
+
+
+
+
+
 //funzione anonima per il carosello automatico
 
 function autoCarusel(){
@@ -74,7 +156,16 @@ function autoCarusel(){
          }
 }
 
-//Richiamo alla funzione e Intervallo da 1.5 secondi
-setInterval(autoCarusel, 1500);
-console.log(autoCarusel)
+// creazione dei pulsanti per avviare o stoppare il carosello
+const play_button = document.getElementById("play")
+let myInterval ;
 
+play_button.addEventListener('click', function(){
+    myInterval = setInterval(autoCarusel, 1300);
+})
+
+const pause_button = document.getElementById("pause")
+
+pause_button.addEventListener('click', function(){
+    clearInterval(myInterval);
+})
