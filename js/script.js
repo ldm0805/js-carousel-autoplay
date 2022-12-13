@@ -1,3 +1,41 @@
+//funzione per andare avanti con le immagini
+function goToNextSlide(){
+    if (itemActive < imagesArray.length -1){
+
+        //rimuovo la classe active al nuovo elemento dell'array items 
+        items[itemActive].classList.remove('active');
+        
+        //rimuovo la classe active al nuovo elemento dell'array circle 
+        circles[itemActive].classList.remove('active');
+    
+        //incremento il suo valore di 1
+        ++itemActive;
+
+        //aggiungo la classe active al nuovo elemento dell'array items
+        items[itemActive].classList.add('active');
+
+       //aggiungo la classe active al nuovo elemento dell'array circle
+        circles[itemActive].classList.add('active');
+        }   
+    
+    else{
+        //rimuovo la classe active al nuovo elemento dell'array items 
+        items[itemActive].classList.remove('active');
+
+        //rimuovo la classe active al nuovo elemento dell'array circle 
+        circles[itemActive].classList.remove('active');
+    
+        //assegno ad itemActive 0
+        itemActive = 0;
+
+        //aggiungo la classe active al nuovo elemento dell'array items
+        items[itemActive].classList.add('active');
+
+        //aggiungo la classe active al nuovo elemento dell'array circle
+        circles[itemActive].classList.add('active');
+        }
+}
+
 //Creo array immagini
 const imagesArray = [
     "01.webp",
@@ -39,46 +77,10 @@ circles[itemActive].classList.add('active');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
+//slider avanti
+next.addEventListener('click', goToNextSlide);
 
-next.addEventListener('click', function(){
-       
-    if (itemActive < imagesArray.length -1){
-
-        //rimuovo la classe active al nuovo elemento dell'array items 
-        items[itemActive].classList.remove('active');
-        
-        //rimuovo la classe active al nuovo elemento dell'array circle 
-        circles[itemActive].classList.remove('active');
-    
-        //incremento il suo valore di 1
-        ++itemActive;
-
-        //aggiungo la classe active al nuovo elemento dell'array items
-        items[itemActive].classList.add('active');
-
-       //aggiungo la classe active al nuovo elemento dell'array circle
-        circles[itemActive].classList.add('active');
-        }   
-    
-    else{
-        //rimuovo la classe active al nuovo elemento dell'array items 
-        items[itemActive].classList.remove('active');
-
-        //rimuovo la classe active al nuovo elemento dell'array circle 
-        circles[itemActive].classList.remove('active');
-    
-        //assegno ad itemActive 0
-        itemActive = 0;
-
-        //aggiungo la classe active al nuovo elemento dell'array items
-        items[itemActive].classList.add('active');
-
-        //aggiungo la classe active al nuovo elemento dell'array circle
-        circles[itemActive].classList.add('active');
-        }
-});
-
-// vecchio esercizio
+// slider indietro
 prev.addEventListener('click', function(){
     //verifico l'elemento attivo (itemActive)
     if (itemActive > 0){
@@ -119,41 +121,10 @@ prev.addEventListener('click', function(){
 })
 
 
+//Richiamo alla funzione per il carosello automatico
 
-
-
-//funzione anonima per il carosello automatico
-
-function autoCarusel(){
-       
-     if (itemActive < imagesArray.length -1){
-         //rimuovo la classe active al nuovo elemento dell'array items 
-         items[itemActive].classList.remove('active');
-      
-         //rimuovo la classe active al nuovo elemento dell'array circle 
-         circles[itemActive].classList.remove('active');
-  
-         //incremento il suo valore di 1
-         ++itemActive;
-         //aggiungo la classe active al nuovo elemento dell'array items
-         items[itemActive].classList.add('active');
-        //aggiungo la classe active al nuovo elemento dell'array circle
-         circles[itemActive].classList.add('active');
-         }   
-  
-     else{
-         //rimuovo la classe active al nuovo elemento dell'array items 
-         items[itemActive].classList.remove('active');
-         //rimuovo la classe active al nuovo elemento dell'array circle 
-         circles[itemActive].classList.remove('active');
-  
-         //assegno ad itemActive 0
-         itemActive = 0;
-         //aggiungo la classe active al nuovo elemento dell'array items
-         items[itemActive].classList.add('active');
-         //aggiungo la classe active al nuovo elemento dell'array circle
-         circles[itemActive].classList.add('active');
-         }
+function autoCarusel(){       
+     goToNextSlide()
 }
 
 //  Intervallo per far partire il carosello al caricamento della pagina
